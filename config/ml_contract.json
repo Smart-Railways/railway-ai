@@ -1,0 +1,24 @@
+{
+  "version": "0.1.0",
+  "input": {
+    "asset_id": "string",
+    "section_id": "string",
+    "snapshot_date": "YYYY-MM-DD",
+    "condition_score": "number",
+    "asset_age_years": "number",
+    "criticality": "number",
+    "usage_factor": "number",
+    "weather_stress": "number",
+    "historical_failure_count": "number",
+    "historical_downtime_hours": "number",
+    "days_since_last_failure": "number"
+  },
+  "output": {
+    "failure_probability": "number",
+    "maintenance_priority_score": "number",
+    "priority_category": "LOW|MEDIUM|HIGH|CRITICAL",
+    "recommended_block": "string|null",
+    "predicted_delay_minutes": "number",
+    "confidence": "number"
+  }
+}

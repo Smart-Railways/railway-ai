@@ -1,0 +1,5 @@
+{
+    "model": "LSTM_Autoencoder",
+    "threshold_method": "95th_percentile_normal_training_error",
+    "threshold": 0.15231159329414368
+}

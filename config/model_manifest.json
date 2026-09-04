@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0",
+  "status": "integration_baseline",
+  "models": {
+    "failure_prediction": {
+      "model": "calibrated_xgboost",
+      "purpose": "30_day_failure_probability"
+    },
+    "deep_learning": {
+      "model": "selected_dl_model",
+      "purpose": "temporal_failure_evidence"
+    }
+  },
+  "decision_engine": {
+    "maintenance_priority": true,
+    "multi_objective_scoring": true,
+    "block_optimization": "OR-Tools CP-SAT"
+  },
+  "planning": {
+    "weekly": true,
+    "monthly": true,
+    "rolling_horizon": true,
+    "dynamic_rescheduling": true
+  }
+}

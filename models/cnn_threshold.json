@@ -1,0 +1,5 @@
+{
+    "model": "1D_CNN",
+    "threshold_selection": "validation_best_f1",
+    "threshold": 0.67
+}
