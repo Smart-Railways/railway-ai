@@ -20,5 +20,26 @@
     "recommended_block": "string|null",
     "predicted_delay_minutes": "number",
     "confidence": "number"
+  },
+  "railkit_operational_context": {
+    "description": "Normalized live railway operational context from RailKit",
+    "input_fields": {
+      "train_number": "string",
+      "journey_date": "string",
+      "current_station_code": "string",
+      "total_stations": "integer",
+      "upcoming_station_count": "integer",
+      "stoppage_count": "integer",
+      "intermediate_station_count": "integer",
+      "current_distance_km": "number|null",
+      "max_observed_delay_minutes": "number",
+      "average_observed_delay_minutes": "number",
+      "has_delay": "boolean"
+    },
+    "derived_features": {
+      "railkit_delay_risk": "number[0,1]",
+      "railkit_operational_pressure": "number[0,1]",
+      "railkit_data_available": "integer[0,1]"
+    }
   }
 }
