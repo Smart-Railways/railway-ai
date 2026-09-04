@@ -1,0 +1,209 @@
+{
+  "version": "1.0.0",
+  "project": "railway-ai",
+
+  "principles": {
+    "real_data_for_operational_context": true,
+    "synthetic_data_preserved": true,
+    "synthetic_data_not_claimed_as_real": true,
+    "no_existing_dataset_deleted": true,
+    "no_existing_model_deleted": true,
+    "ml_predicts_and_prioritizes": true,
+    "optimization_decides_schedule": true
+  },
+
+  "sources": {
+    "railkit": {
+      "status": "real",
+      "purpose": "Live railway operational context",
+      "provides": [
+        "train tracking",
+        "train movement status",
+        "current station",
+        "scheduled timing",
+        "actual timing",
+        "train delays",
+        "route timeline",
+        "station sequence"
+      ]
+    },
+
+    "asset_data": {
+      "status": "baseline_dataset",
+      "file": "data/raw/assets.csv",
+      "purpose": "Asset metadata and condition baseline",
+      "fields": [
+        "asset_id",
+        "section_id",
+        "department",
+        "asset_type",
+        "installation_year",
+        "criticality",
+        "condition_score",
+        "failure_count",
+        "last_maintenance_date"
+      ]
+    },
+
+    "failure_data": {
+      "status": "baseline_dataset",
+      "file": "data/raw/failures.csv",
+      "purpose": "Historical failure labels",
+      "fields": [
+        "failure_id",
+        "asset_id",
+        "failure_date",
+        "failure_type",
+        "severity",
+        "downtime_hours",
+        "repair_duration_hours"
+      ]
+    },
+
+    "maintenance_data": {
+      "status": "baseline_dataset",
+      "file": "data/raw/maintenance.csv",
+      "purpose": "Maintenance work orders",
+      "fields": [
+        "task_id",
+        "asset_id",
+        "section_id",
+        "department",
+        "maintenance_type",
+        "defect_type",
+        "severity",
+        "criticality",
+        "created_date",
+        "due_date",
+        "overdue_days",
+        "estimated_duration",
+        "required_manpower",
+        "status"
+      ]
+    },
+
+    "train_data": {
+      "status": "baseline_dataset",
+      "file": "data/raw/trains.csv",
+      "purpose": "Train movement structure and baseline timetable context",
+      "fields": [
+        "movement_id",
+        "train_id",
+        "section_id",
+        "train_type",
+        "entry_time",
+        "exit_time",
+        "priority"
+      ]
+    },
+
+    "freight_data": {
+      "status": "baseline_dataset",
+      "file": "data/raw/freight.csv",
+      "purpose": "Freight demand forecast baseline",
+      "fields": [
+        "forecast_id",
+        "section_id",
+        "date",
+        "hour",
+        "expected_freight_count",
+        "forecast_confidence"
+      ]
+    }
+  },
+
+  "synthetic_data": {
+    "preserve_all": true,
+    "files": [
+      "data/processed/assets_simulated.csv",
+      "data/processed/asset_history_simulated.csv",
+      "data/processed/failures_simulated.csv",
+      "data/processed/maintenance_simulated.csv"
+    ],
+    "purpose": [
+      "model development",
+      "regression testing",
+      "stress testing",
+      "rare-event experimentation",
+      "benchmarking"
+    ]
+  },
+
+  "real_data_replacement_plan": {
+    "operational_train_context": {
+      "source": "RailKit",
+      "priority": "high"
+    },
+    "asset_metadata": {
+      "source": "railway asset/maintenance system when available",
+      "priority": "high"
+    },
+    "failure_history": {
+      "source": "railway failure/defect history when available",
+      "priority": "critical"
+    },
+    "maintenance_work_orders": {
+      "source": "railway maintenance system when available",
+      "priority": "critical"
+    },
+    "train_operations": {
+      "source": "RailKit and verified railway timetable/operations data",
+      "priority": "high"
+    },
+    "freight_operations": {
+      "source": "verified railway freight/operations data when available",
+      "priority": "medium"
+    }
+  },
+
+  "ml_readiness": {
+    "failure_prediction": {
+      "requires": [
+        "asset history",
+        "historical failures",
+        "condition features",
+        "time-aware labels"
+      ],
+      "real_validation_required": true
+    },
+    "rul_prediction": {
+      "requires": [
+        "asset lifecycle history",
+        "failure dates",
+        "maintenance history"
+      ],
+      "real_validation_required": true
+    },
+    "maintenance_duration": {
+      "requires": [
+        "historical maintenance tasks",
+        "actual completion duration",
+        "task characteristics"
+      ],
+      "real_validation_required": true
+    },
+    "traffic_forecasting": {
+      "requires": [
+        "historical train movements",
+        "time information",
+        "section information"
+      ],
+      "real_validation_required": true
+    },
+    "operational_impact": {
+      "requires": [
+        "train movement context",
+        "block duration",
+        "section information",
+        "delay information"
+      ],
+      "real_validation_required": true
+    }
+  },
+
+  "section_mapping": {
+    "status": "requires_validation",
+    "known_issue": "Existing baseline asset data contains NDL-MTJ-02 while the representative corridor definition uses NDL-MTJ-01.",
+    "rule": "Do not rename or merge section identifiers without an explicit mapping."
+  }
+}

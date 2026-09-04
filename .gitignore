@@ -13,6 +13,7 @@ __pycache__/
 # Virtual environments
 # =========================
 .venv/
+.venv-*/
 .venv-dl/
 venv/
 env/
@@ -30,67 +31,36 @@ env/
 !.env.example
 
 # =========================
-# IDE
+# IDE & OS
 # =========================
 .vscode/
 .idea/
-
-# =========================
-# OS
-# =========================
 .DS_Store
 Thumbs.db
 
 # =========================
-# Large/generated data
+# External / Sub Repositories
 # =========================
-data/raw/*
-data/processed/*
-data/predictions/*
+backend/
+frontend/
 
-# Keep directory structure
-!data/raw/.gitkeep
+# =========================
+# Large Generated Data (Preserve Structure & Real Pilot Captures)
+# =========================
+data/processed/*
 !data/processed/.gitkeep
+data/predictions/*
 !data/predictions/.gitkeep
 
-# =========================
-# Generated ML artifacts
-# =========================
-artifacts/
-*.pkl
-*.joblib
-*.pt
-*.pth
-*.onnx
+# Keep Real Pipeline Captures & Processed Evidence
+!data/raw_real/**
+!data/processed_real/**
+!data/predictions_real/**
 
 # =========================
-# Logs
+# Logs & Temporary Files
 # =========================
 *.log
-
-# =========================
-# Temporary files
-# =========================
 *.tmp
 *.temp
-
-# Python cache
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# Local environments
-.venv/
-.venv-*/
-venv/
-.env
-.env.*
-!.env.example
-
-# Data and generated predictions
-data/
-
-# Trained model binaries
-models/*.pkl
-models/*.pt
-models/*.pth
+*.save

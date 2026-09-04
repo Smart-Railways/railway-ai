@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "corridor": "New Delhi-Mumbai",
+  "status": "PROTOTYPE_TOPOLOGY",
+  "sections": [
+    {
+      "section_id": "NDL-MTJ-01",
+      "sequence": 1,
+      "source_station_code": "NDLS",
+      "destination_station_code": "MTJ"
+    },
+    {
+      "section_id": "MTJ-AGC-01",
+      "sequence": 2,
+      "source_station_code": "MTJ",
+      "destination_station_code": "AGC"
+    },
+    {
+      "section_id": "AGC-GWL-01",
+      "sequence": 3,
+      "source_station_code": "AGC",
+      "destination_station_code": "GWL"
+    },
+    {
+      "section_id": "GWL-JHS-01",
+      "sequence": 4,
+      "source_station_code": "GWL",
+      "destination_station_code": "JHS"
+    },
+    {
+      "section_id": "JHS-BINA-01",
+      "sequence": 5,
+      "source_station_code": "JHS",
+      "destination_station_code": "BINA"
+    },
+    {
+      "section_id": "BINA-BPL-01",
+      "sequence": 6,
+      "source_station_code": "BINA",
+      "destination_station_code": "BPL"
+    },
+    {
+      "section_id": "BPL-RTM-01",
+      "sequence": 7,
+      "source_station_code": "BPL",
+      "destination_station_code": "RTM"
+    },
+    {
+      "section_id": "RTM-VAD-01",
+      "sequence": 8,
+      "source_station_code": "RTM",
+      "destination_station_code": "VAD"
+    },
+    {
+      "section_id": "VAD-SRT-01",
+      "sequence": 9,
+      "source_station_code": "VAD",
+      "destination_station_code": "SRT"
+    },
+    {
+      "section_id": "SRT-MUM-01",
+      "sequence": 10,
+      "source_station_code": "SRT",
+      "destination_station_code": "MMCT"
+    }
+  ]
+}

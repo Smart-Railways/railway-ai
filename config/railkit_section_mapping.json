@@ -1,0 +1,48 @@
+{
+  "version": "0.1.0",
+  "description": "Validated mapping between RailKit operational locations and ML planning sections.",
+  "mapping_status": "PENDING_VALIDATION",
+  "rules": {
+    "do_not_infer_section_from_station_code": true,
+    "do_not_rename_existing_sections_without_validation": true,
+    "do_not_merge_sections_without_validation": true
+  },
+  "sections": [
+    {
+      "section_id": "NDL-MTJ-01",
+      "source_station_code": null,
+      "destination_station_code": null,
+      "status": "UNMAPPED"
+    },
+    {
+      "section_id": "NDL-MTJ-02",
+      "source_station_code": null,
+      "destination_station_code": null,
+      "status": "UNMAPPED"
+    },
+    {
+      "section_id": "MTJ-AGC-01",
+      "source_station_code": null,
+      "destination_station_code": null,
+      "status": "UNMAPPED"
+    },
+    {
+      "section_id": "AGC-GWL-01",
+      "source_station_code": null,
+      "destination_station_code": null,
+      "status": "UNMAPPED"
+    },
+    {
+      "section_id": "GWL-JHS-01",
+      "source_station_code": null,
+      "destination_station_code": null,
+      "status": "UNMAPPED"
+    },
+    {
+      "section_id": "JHS-BINA-01",
+      "source_station_code": null,
+      "destination_station_code": null,
+      "status": "UNMAPPED"
+    }
+  ]
+}

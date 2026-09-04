@@ -1,0 +1,125 @@
+{
+  "version": "0.1.0",
+  "principle": "Existing synthetic datasets and models are preserved. Real-data models require sufficient real historical observations and validated labels.",
+  "components": {
+    "failure_prediction": {
+      "status": "blocked_insufficient_history",
+      "required_data": [
+        "asset_history",
+        "failure_history",
+        "maintenance_history",
+        "condition_history",
+        "usage_or_exposure",
+        "weather_or_environment"
+      ],
+      "current_real_assets": 6,
+      "current_real_failure_records": 7,
+      "minimum_action": "Acquire substantially more historical asset/failure observations before retraining."
+    },
+    "rul_prediction": {
+      "status": "blocked_insufficient_history",
+      "required_data": [
+        "asset_history",
+        "failure_history",
+        "maintenance_history",
+        "condition_history"
+      ],
+      "minimum_action": "Acquire longitudinal asset condition and failure histories."
+    },
+    "survival_analysis": {
+      "status": "blocked_insufficient_history",
+      "required_data": [
+        "asset_start_date",
+        "asset_end_or_observation_date",
+        "failure_event",
+        "failure_date",
+        "asset_features_over_time"
+      ],
+      "minimum_action": "Acquire a larger longitudinal asset population."
+    },
+    "maintenance_duration": {
+      "status": "blocked_insufficient_history",
+      "required_data": [
+        "maintenance_task_history",
+        "estimated_duration",
+        "actual_duration",
+        "department",
+        "asset_type",
+        "maintenance_type",
+        "severity",
+        "manpower"
+      ],
+      "minimum_action": "Acquire completed maintenance records containing actual duration."
+    },
+    "traffic_forecasting": {
+      "status": "blocked_insufficient_history",
+      "required_data": [
+        "historical_train_movements",
+        "section",
+        "entry_time",
+        "exit_time",
+        "train_type",
+        "priority"
+      ],
+      "minimum_action": "Acquire historical train movement/timetable data across the corridor."
+    },
+    "freight_forecasting": {
+      "status": "blocked_insufficient_history",
+      "required_data": [
+        "historical_freight_counts",
+        "section",
+        "timestamp",
+        "forecast_or_actual_indicator"
+      ],
+      "minimum_action": "Acquire substantially more historical freight observations."
+    },
+    "operational_impact": {
+      "status": "prototype_ready",
+      "required_data": [
+        "train_movements",
+        "block_duration",
+        "section",
+        "train_priority",
+        "delay_information"
+      ],
+      "current_real_train_movements": 5,
+      "minimum_action": "Expand historical operational data for meaningful model validation."
+    },
+    "maintenance_priority": {
+      "status": "functional_rule_engine",
+      "required_data": [
+        "maintenance_tasks",
+        "asset_condition",
+        "criticality",
+        "severity",
+        "overdue_information"
+      ],
+      "current_real_maintenance_tasks": 6,
+      "minimum_action": "Use current data for pipeline validation; expand historical data for learned prioritization."
+    },
+    "block_optimization": {
+      "status": "functional_prototype",
+      "required_data": [
+        "maintenance_tasks",
+        "section",
+        "duration",
+        "manpower",
+        "train_movements",
+        "operational_constraints"
+      ],
+      "minimum_action": "Validate against expanded real operational schedules."
+    },
+    "railkit_operational_context": {
+      "status": "functional",
+      "source": "RailKit",
+      "capabilities": [
+        "live_train_tracking",
+        "current_station",
+        "route_timeline",
+        "scheduled_times",
+        "actual_times",
+        "delay_information"
+      ]
+    }
+  }
+}

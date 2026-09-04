@@ -1,0 +1,1790 @@
+{
+  "source": "railkit",
+  "endpoint_type": "live_train_tracking",
+  "train_number": "12301",
+  "requested_date": "04-09-2026",
+  "captured_at": "2026-09-04T12:43:01.123662",
+  "response": {
+    "train_number": "12301",
+    "journey_date": "04-09-2026",
+    "success": true,
+    "data": {
+      "trainNo": "12301",
+      "trainName": "RAJDHANI EXPRES",
+      "date": "04-Sep-2026",
+      "statusNote": "Departed from PARAJ(PAJ) at 18:08 04-Sep",
+      "lastUpdate": "04-Sep-2026 18:09",
+      "totalStations": 256,
+      "coachPosition": [
+        {
+          "type": "ENG",
+          "number": "ENG",
+          "position": "0"
+        },
+        {
+          "type": "LPR",
+          "number": "LPR",
+          "position": "1"
+        },
+        {
+          "type": "3A",
+          "number": "B1",
+          "position": "2"
+        },
+        {
+          "type": "3A",
+          "number": "B2",
+          "position": "3"
+        },
+        {
+          "type": "3A",
+          "number": "B3",
+          "position": "4"
+        },
+        {
+          "type": "3A",
+          "number": "B4",
+          "position": "5"
+        },
+        {
+          "type": "3A",
+          "number": "B5",
+          "position": "6"
+        },
+        {
+          "type": "3A",
+          "number": "B6",
+          "position": "7"
+        },
+        {
+          "type": "3A",
+          "number": "B7",
+          "position": "8"
+        },
+        {
+          "type": "3A",
+          "number": "B8",
+          "position": "9"
+        },
+        {
+          "type": "3A",
+          "number": "B9",
+          "position": "10"
+        },
+        {
+          "type": "3A",
+          "number": "B10",
+          "position": "11"
+        },
+        {
+          "type": "3A",
+          "number": "B11",
+          "position": "12"
+        },
+        {
+          "type": "PC",
+          "number": "PC",
+          "position": "13"
+        },
+        {
+          "type": "1A",
+          "number": "H1",
+          "position": "14"
+        },
+        {
+          "type": "1A",
+          "number": "H2",
+          "position": "15"
+        },
+        {
+          "type": "2A",
+          "number": "A1",
+          "position": "16"
+        },
+        {
+          "type": "2A",
+          "number": "A2",
+          "position": "17"
+        },
+        {
+          "type": "2A",
+          "number": "A3",
+          "position": "18"
+        },
+        {
+          "type": "2A",
+          "number": "A4",
+          "position": "19"
+        },
+        {
+          "type": "2A",
+          "number": "A5",
+          "position": "20"
+        },
+        {
+          "type": "2A",
+          "number": "A6",
+          "position": "21"
+        },
+        {
+          "type": "LPR",
+          "number": "LPR",
+          "position": "22"
+        },
+        {
+          "type": "VP",
+          "number": "VP",
+          "position": "23"
+        }
+      ],
+      "timeline": [
+        {
+          "type": "stoppage",
+          "status": "passed",
+          "stationCode": "HWH",
+          "stationName": "HOWRAH JN",
+          "platform": "9",
+          "distanceKm": "",
+          "arrival": {
+            "scheduled": "SRC",
+            "actual": "SRC",
+            "delay": ""
+          },
+          "departure": {
+            "scheduled": "16:50 04-Sep",
+            "actual": "16:50 04-Sep",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "SYAE",
+          "stationName": ""
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "LLH",
+          "stationName": "LILUAH"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BEQ",
+          "stationName": "BELUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BLYC",
+          "stationName": "BALLY CHORD"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BZL",
+          "stationName": "BELANAGAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "DKAE",
+          "stationName": "DANKUNI"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "GBRA",
+          "stationName": "GOBRA"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "JOX",
+          "stationName": "JANAI ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BPAE",
+          "stationName": "BEGUMPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BRPA",
+          "stationName": "BARUIPARA"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "MBE",
+          "stationName": "MIRZAPUR BANKIPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BLAE",
+          "stationName": "BALARAMBATI"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "KQU",
+          "stationName": "KAMARKUNDU"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "MDSE",
+          "stationName": "MADHU SUDANPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "CDAE",
+          "stationName": "CHANDANPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "PBZ",
+          "stationName": "PORABAZAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BMAE",
+          "stationName": "BELMURI"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "DNHL",
+          "stationName": "DHANIAKHALI  HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "SHBC",
+          "stationName": "SIBAICHANDI"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "CRAE",
+          "stationName": "CHERAGRAM BH."
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "HIH",
+          "stationName": "HAJIGARH"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "GRAE",
+          "stationName": "GURAP"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "JPQ",
+          "stationName": "JHAPANDANGA"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "JRAE",
+          "stationName": "JAUGRAM"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "NBAE",
+          "stationName": "NABAGRAM"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "MSAE",
+          "stationName": "MASAGRAM"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "CHC",
+          "stationName": "CHANCHAI"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "PRAE",
+          "stationName": "PALLA ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "SKG",
+          "stationName": "SAKTIGARH"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "GRP",
+          "stationName": "GANGPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "BWN",
+          "stationName": "BARDHAMAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "TIT",
+          "stationName": "TALIT"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "KAN",
+          "stationName": "KHANA JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "INCI",
+          "stationName": "ISHAN CHANDI HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "passed",
+          "stationCode": "GLI",
+          "stationName": "GALSI"
+        },
+        {
+          "type": "intermediate",
+          "status": "current",
+          "stationCode": "PAJ",
+          "stationName": "PARAJ"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MNAE",
+          "stationName": "MANKAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PAN",
+          "stationName": "PANAGARH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RBH",
+          "stationName": "RAJBANDH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DGR",
+          "stationName": "DURGAPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DCOP",
+          "stationName": "DURGAPUR COKE OVEN PLANT EXCHANGE YARD SDG  WARIA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "OYR",
+          "stationName": "WARIA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "UDLE",
+          "stationName": "ANDAL-EAST/CABIN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "UDL",
+          "stationName": "ANDAL JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BQT",
+          "stationName": "BAKTAR NAGAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RNG",
+          "stationName": "RANIGANJ"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "NMC",
+          "stationName": "NIMCHA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KPK",
+          "stationName": "KALIPAHARI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ASNE",
+          "stationName": "ASANSOL EAST CABIN"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "ASN",
+          "stationName": "ASANSOL JN",
+          "platform": "4",
+          "distanceKm": "200",
+          "arrival": {
+            "scheduled": "18:47 04-Sep",
+            "actual": "18:47 04-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "18:49 04-Sep",
+            "actual": "18:49 04-Sep*",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BCQ",
+          "stationName": "BARACHAK JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "STN",
+          "stationName": "SITARAMPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ULT",
+          "stationName": "KULTI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BRR",
+          "stationName": "BARAKAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KMME",
+          "stationName": "KUMARDUBI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MMU",
+          "stationName": "MUGMA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "TNW",
+          "stationName": "THAPAR NAGAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KAO",
+          "stationName": "KALUBATHAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CAM",
+          "stationName": "CHHOTA AMBANA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PKA",
+          "stationName": "PRADHANKHUNTA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DOKM",
+          "stationName": "DOKRA HALT"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "DHN",
+          "stationName": "DHANBAD JN",
+          "platform": "3",
+          "distanceKm": "258",
+          "arrival": {
+            "scheduled": "19:55 04-Sep",
+            "actual": "19:55 04-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "20:00 04-Sep",
+            "actual": "20:00 04-Sep*",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BHN",
+          "stationName": "BHULI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "TET",
+          "stationName": "TETULMARI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "NPJE",
+          "stationName": "NICHITPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MRQ",
+          "stationName": "MATARI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RIBP",
+          "stationName": "RAMAKUNDA IBP (HALT)"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GMO",
+          "stationName": "NSC BOSE J GOMO"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BLME",
+          "stationName": "BHOLLDIH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "NMG",
+          "stationName": "NIMIAGHAT"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "PNME",
+          "stationName": "PARASNATH",
+          "platform": "3",
+          "distanceKm": "306",
+          "arrival": {
+            "scheduled": "20:30 04-Sep",
+            "actual": "20:30 04-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "20:32 04-Sep",
+            "actual": "20:32 04-Sep*",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CEME",
+          "stationName": "CHEGRO"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CDB",
+          "stationName": "CHAUDHRIBANDH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KRMB",
+          "stationName": "KARMABAD BH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CCK",
+          "stationName": "CHICHAKI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GRBH",
+          "stationName": "GAREA BIHAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "HZD",
+          "stationName": "HAZARIBAGH RD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KSHR",
+          "stationName": "KESHWARI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CBH",
+          "stationName": "CHAUBE"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DSME",
+          "stationName": "DASARA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PSB",
+          "stationName": "PARSABAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "YDD",
+          "stationName": "YADUDIH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SMND",
+          "stationName": "SARMATANR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "HRE",
+          "stationName": "HIRODIH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "LRB",
+          "stationName": "LARABAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KQR",
+          "stationName": "KODERMA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GJD",
+          "stationName": "GUJHANDI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "LBZ",
+          "stationName": "LALBAG BH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DLW",
+          "stationName": "DILWA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "NGY",
+          "stationName": "NATH GANJ"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BSCP",
+          "stationName": "BASKATWA B. H."
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "YGM",
+          "stationName": "YADUGRAM BH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GAP",
+          "stationName": "GURPA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PRP",
+          "stationName": "PAHARPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BNSL",
+          "stationName": "BANSINALA HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "TKN",
+          "stationName": "TANKUPPA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BNF",
+          "stationName": "BANDHUA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MPO",
+          "stationName": "MANPUR JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SICY",
+          "stationName": "SAHEED ISHWAR CHOWDHARY HALT"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "GAYA",
+          "stationName": "GAYA JN",
+          "platform": "1",
+          "distanceKm": "457",
+          "arrival": {
+            "scheduled": "22:32 04-Sep",
+            "actual": "22:32 04-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "22:35 04-Sep",
+            "actual": "22:35 04-Sep*",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "WCB",
+          "stationName": "WEST CABIN GAYA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KSTA",
+          "stationName": "KASTHA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PRY",
+          "stationName": "PARAIYA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GRRU",
+          "stationName": "GURARU"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "IMGE",
+          "stationName": "ISMAILPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RFJ",
+          "stationName": "RAFIGANJ"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DORD",
+          "stationName": "DEO ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JHN",
+          "stationName": "JAKHIM"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BHKH",
+          "stationName": "BAGHOI KUSA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PES",
+          "stationName": "PHESAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DKMN",
+          "stationName": "DEORIA KURHMA NARESH HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "AUBR",
+          "stationName": "ANUGRAHA N ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CPBH",
+          "stationName": "CHIRAILA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SEB",
+          "stationName": "SON NAGAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DOS",
+          "stationName": "DEHRI ON SONE"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PHE",
+          "stationName": "PAHALEJA HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KWD",
+          "stationName": "KARWANDIA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SSM",
+          "stationName": "SASARAM"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KMGE",
+          "stationName": "KUMAHU"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SSG",
+          "stationName": "SHIU SAGAR ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KVD",
+          "stationName": "KHURMABAD ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KTQ",
+          "stationName": "KUDRA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PSE",
+          "stationName": "PUSAULI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MTGE",
+          "stationName": "MUTHANI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BBU",
+          "stationName": "BHABUA ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DGO",
+          "stationName": "DURGAUTI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DCX",
+          "stationName": "DHANICHHA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KMS",
+          "stationName": "KARAMNASA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SYJ",
+          "stationName": "SAIDRAJA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CDMR",
+          "stationName": "CHANDAULI MJHWR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GAQ",
+          "stationName": "GANJ KHAWAJA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "FOCM",
+          "stationName": "FLYOVER CABIN MUGHALSARAI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JTHT",
+          "stationName": "JN HUT MGSN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "XCBN",
+          "stationName": "XCBN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ICBN",
+          "stationName": "ICBN"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "DDU",
+          "stationName": "PT.DEEN DAYAL UPADHYAYA JN",
+          "platform": "7",
+          "distanceKm": "661",
+          "arrival": {
+            "scheduled": "00:43 05-Sep",
+            "actual": "00:43 05-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "00:50 05-Sep",
+            "actual": "00:50 05-Sep*",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "NEWC",
+          "stationName": "NEW WEST CABIN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "VHK",
+          "stationName": "VHK"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JEP",
+          "stationName": "JEONATHPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "NPBR",
+          "stationName": "NARAYANPUR BAZAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KYT",
+          "stationName": "KAILAHAT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CAR",
+          "stationName": "CHUNAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DAP",
+          "stationName": "DAGMAGPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PRE",
+          "stationName": "PAHARA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JHG",
+          "stationName": "JHINGURA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MZP",
+          "stationName": "MIRZAPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BDL",
+          "stationName": "VINDHYACHAL"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BEO",
+          "stationName": "BIROHE"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GAE",
+          "stationName": "GAIPURA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JIA",
+          "stationName": "JIGNA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MNF",
+          "stationName": "MANDA ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "UND",
+          "stationName": "UNCHDIH"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MJA",
+          "stationName": "MEJA ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BEP",
+          "stationName": "BHEERPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KCN",
+          "stationName": "KARCHANA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PCOI",
+          "stationName": "PRAYAGRAJ CHHEOKI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "NYN",
+          "stationName": "NAINI"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "PRYJ",
+          "stationName": "PRAYAGRAJ JN",
+          "platform": "1",
+          "distanceKm": "814",
+          "arrival": {
+            "scheduled": "02:40 05-Sep",
+            "actual": "02:40 05-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "02:42 05-Sep",
+            "actual": "02:42 05-Sep*",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SFG",
+          "stationName": "SUBEDARGANJ"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BMU",
+          "stationName": "BAMHRAULI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MRE",
+          "stationName": "MANAURI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SYWN",
+          "stationName": "SAIYID SARAWAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MNJ",
+          "stationName": "MANOHARGANJ"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BRE",
+          "stationName": "BHARWARI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BDNP",
+          "stationName": "BIDANPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SJT",
+          "stationName": "SHUJAATPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SRO",
+          "stationName": "SIRATHU"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ASCE",
+          "stationName": "ATHSARAI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KUW",
+          "stationName": "KANWAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KTCE",
+          "stationName": "KATOGHAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KGA",
+          "stationName": "KHAGA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SNIE",
+          "stationName": "SATH NARAINI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RUB",
+          "stationName": "RASULABAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "FYZ",
+          "stationName": "FAIZULLAPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RAMA",
+          "stationName": "RAMVA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "FTP",
+          "stationName": "FATEHPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KKS",
+          "stationName": "KURASTI KALAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MWH",
+          "stationName": "MALWAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KSQ",
+          "stationName": "KANSPUR GUGAULI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BKO",
+          "stationName": "BINDKI ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "AUNG",
+          "stationName": "AUNG"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KBN",
+          "stationName": "KARBIGWAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PMPR",
+          "stationName": "PREMPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SSL",
+          "stationName": "SIRSAUL"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RXM",
+          "stationName": "ROOMA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CHK",
+          "stationName": "CHAKERI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CNBI",
+          "stationName": "CHANDARI"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "CNB",
+          "stationName": "KANPUR CENTRAL",
+          "platform": "1",
+          "distanceKm": "1008",
+          "arrival": {
+            "scheduled": "04:45 05-Sep",
+            "actual": "04:45 05-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "04:50 05-Sep",
+            "actual": "04:50 05-Sep*",
+            "delay": "On Time"
+          }
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GMC",
+          "stationName": ""
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GOY",
+          "stationName": "GOVINDPURI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PNKD",
+          "stationName": "PANKI DHAM"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BPU",
+          "stationName": "BHAUPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MTO",
+          "stationName": "MAITHA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RMW",
+          "stationName": "ROSHAN MAU"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PTRA",
+          "stationName": "PATRA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "RURA",
+          "stationName": "RURA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "AAP",
+          "stationName": "AMBIAPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JJK",
+          "stationName": "JHINJHAK"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PJY",
+          "stationName": "PARA JANI HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KNS",
+          "stationName": "KANCHAUSI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PHD",
+          "stationName": "PHAPHUND"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PATA",
+          "stationName": "PATA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ULD",
+          "stationName": "ACHALDA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GHSR",
+          "stationName": "GHASARA HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SHW",
+          "stationName": "SAMHON"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BNT",
+          "stationName": "BHARTHANA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "EKL",
+          "stationName": "EKDIL"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ETW",
+          "stationName": "ETAWAH JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SB",
+          "stationName": "SARAI BHOPAT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JGR",
+          "stationName": "JASWANTNAGAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BBL",
+          "stationName": "BALRAI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BDN",
+          "stationName": "BHADAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KAA",
+          "stationName": "KAURARA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SKB",
+          "stationName": "SHIKOHABAD JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MNR",
+          "stationName": "MAKKHANPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "FZD",
+          "stationName": "FIROZABAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "HNG",
+          "stationName": "HIRANGAON"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "TDL",
+          "stationName": "TUNDLA JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "WSC",
+          "stationName": "WEST SIDE CABIN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MTI",
+          "stationName": "MITAWALI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BRN",
+          "stationName": "BARHAN JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CMR",
+          "stationName": "CHAMROLA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "JLS",
+          "stationName": "JALESAR ROAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "PORA",
+          "stationName": "PORA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "HRS",
+          "stationName": "HATHRAS JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SNS",
+          "stationName": "SASNI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MXK",
+          "stationName": "MANDRAK"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DAQ",
+          "stationName": "DAUD KHAN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ALJN",
+          "stationName": "ALIGARH JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MWUE",
+          "stationName": "MAHRAWAL"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KLA",
+          "stationName": "KULWA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SOM",
+          "stationName": "SOMNA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DAR",
+          "stationName": "DANWAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KAMP",
+          "stationName": "KAMALPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "KRJ",
+          "stationName": "KHURJA JN"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SKQ",
+          "stationName": "SIKANDARPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GNRL",
+          "stationName": "GANGRAUL HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CHL",
+          "stationName": "CHOLA"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "WAIR",
+          "stationName": "WAIR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "FPMP",
+          "stationName": "FATEHPUR MAKRANDPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DKDE",
+          "stationName": "DANKAUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "AJR",
+          "stationName": "AJAIBPUR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "BRKY",
+          "stationName": "BORAKI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DER",
+          "stationName": "DADRI"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MIU",
+          "stationName": "MARIPAT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CYZ",
+          "stationName": ""
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "GZB",
+          "stationName": "GHAZIABAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "SBB",
+          "stationName": "SAHIBABAD"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "DSBP",
+          "stationName": "DELHI SHAHDARA B PANEL"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CNJ",
+          "stationName": "CHANDER NAGAR HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "ANVR",
+          "stationName": "ANAND VIHAR"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "MWC",
+          "stationName": "MANDAWALI CHANDER VIHAR HALT"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "TKJ",
+          "stationName": "TILAK BRIDGE"
+        },
+        {
+          "type": "intermediate",
+          "status": "upcoming",
+          "stationCode": "CSB",
+          "stationName": "SHIVAJI BRIDGE"
+        },
+        {
+          "type": "stoppage",
+          "status": "upcoming",
+          "stationCode": "NDLS",
+          "stationName": "NEW DELHI",
+          "platform": "14",
+          "distanceKm": "1449",
+          "arrival": {
+            "scheduled": "10:05 05-Sep",
+            "actual": "10:05 05-Sep*",
+            "delay": "On Time"
+          },
+          "departure": {
+            "scheduled": "DSTN",
+            "actual": "DSTN",
+            "delay": ""
+          }
+        }
+      ],
+      "currentStationCode": "PAJ"
+    },
+    "retrieved_at": "2026-09-04T12:43:01.123618"
+  }
+}

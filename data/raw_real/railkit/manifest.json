@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "capture_count": 1,
+  "captures": [
+    {
+      "file": "data/raw_real/railkit/live_train_12301_04092026_20260904_124022.json",
+      "source": "railkit",
+      "endpoint_type": "live_train_tracking",
+      "train_number": "12301",
+      "requested_date": "04-09-2026",
+      "captured_at": "2026-09-04T12:40:23.881045",
+      "journey_date": "04-Sep-2026",
+      "current_station_code": "PAJ",
+      "timeline_station_count": 256
+    }
+  ]
+}

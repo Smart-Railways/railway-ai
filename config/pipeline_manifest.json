@@ -1,0 +1,135 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-09-05T00:55:00 IST",
+  "project": "railway-ai",
+  "lifecycle_stages": [
+    "IMPLEMENTED",
+    "TESTED",
+    "REAL_DATA_TESTED",
+    "VALIDATED",
+    "PRODUCTION_READY"
+  ],
+  "components": {
+    "asset_features": {
+      "status": "TESTED",
+      "synthetic_dependency": "data/processed/asset_features.csv",
+      "real_source": "data/raw_real/assets/ (pending longitudinal import)",
+      "production_candidate": false,
+      "validation_notes": "Feature generation works on synthetic asset snapshots; real asset history required for real baseline."
+    },
+    "failure_prediction": {
+      "status": "TESTED",
+      "model_type": "calibrated_xgboost",
+      "model_file": "models/calibrated_xgboost.pkl",
+      "synthetic_dependency": "data/processed/failure_ml_dataset.csv",
+      "real_source": "data/raw_real/failures/ (7 real records currently)",
+      "production_candidate": false,
+      "validation_notes": "Trained and calibrated on 72k synthetic rows. Blocked from production claims until substantial real failure logs arrive."
+    },
+    "rul_prediction": {
+      "status": "TESTED",
+      "model_type": "gradient_boosting_regressor",
+      "synthetic_dependency": "data/processed/latest_asset_state.csv",
+      "real_source": "Blocked on longitudinal condition tracking",
+      "production_candidate": false,
+      "validation_notes": "RUL formula implemented and validated on simulated degradation curves."
+    },
+    "survival_analysis": {
+      "status": "TESTED",
+      "model_type": "cox_proportional_hazards",
+      "model_file": "models/cox_survival_model.pkl",
+      "synthetic_dependency": "data/processed/survival_dataset.csv",
+      "real_source": "Blocked on real asset tenure data",
+      "production_candidate": false,
+      "validation_notes": "Cox PH model fitted on simulated lifespans."
+    },
+    "maintenance_duration": {
+      "status": "TESTED",
+      "model_type": "regression_heuristic",
+      "synthetic_dependency": "data/raw/maintenance.csv",
+      "real_source": "data/raw_real/maintenance/",
+      "production_candidate": false,
+      "validation_notes": "Duration estimation prototype functional; needs completed maintenance records with actual duration."
+    },
+    "traffic_forecasting": {
+      "status": "REAL_DATA_TESTED",
+      "synthetic_dependency": "data/processed/trains_clean.csv",
+      "real_source": "RailKit live tracking snapshots",
+      "production_candidate": true,
+      "validation_notes": "Corridor station sequence and real delay risk extracted from 8 RailKit captures."
+    },
+    "operational_impact": {
+      "status": "REAL_DATA_TESTED",
+      "synthetic_dependency": "data/predictions/operational_impact_predictions.csv",
+      "real_source": "RailKit section operational pressure",
+      "production_candidate": true,
+      "validation_notes": "Section-level delay risk and route intensity formula verified on NDLS-MMCT corridor."
+    },
+    "maintenance_priority": {
+      "status": "REAL_DATA_TESTED",
+      "engine_module": "src/decision/maintenance_decision_engine.py",
+      "synthetic_dependency": "Synthetic task backlog",
+      "real_source": "Enriched by real RailKit section pressure",
+      "production_candidate": true,
+      "validation_notes": "Multi-objective engine successfully incorporates real delay pressure (+0.035 to +0.052 score shifts)."
+    },
+    "block_optimization_single": {
+      "status": "REAL_DATA_TESTED",
+      "engine_module": "src/optimization/block_optimizer.py",
+      "solver": "OR-Tools CP-SAT",
+      "production_candidate": true,
+      "validation_notes": "Discrete 30-min slots, manpower limits, and section non-overlap tested and passing."
+    },
+    "block_optimization_multi_horizon": {
+      "status": "TESTED",
+      "engine_module": "src/optimization/multi_horizon_planner.py",
+      "solver": "OR-Tools CP-SAT",
+      "capabilities": ["weekly_7d", "monthly_30d", "rolling_horizon", "dynamic_rescheduling"],
+      "production_candidate": true,
+      "validation_notes": "Fully verified in test suite across 7-day, 30-day, and dynamic delay disruption scenarios."
+    },
+    "anomaly_detection": {
+      "status": "TESTED",
+      "model_type": "isolation_forest_and_lstm_autoencoder",
+      "model_file": "models/best_railway_autoencoder.pt",
+      "synthetic_dependency": "data/processed/asset_history_simulated.csv",
+      "real_source": "Pending live sensor/inspection stream",
+      "production_candidate": false,
+      "validation_notes": "Dual isolation forest + autoencoder anomaly scores computed on synthetic asset condition history."
+    },
+    "deep_learning_sequence": {
+      "status": "TESTED",
+      "models": ["LSTM", "1D_CNN", "Transformer"],
+      "model_files": [
+        "models/best_lstm_failure_model.pt",
+        "models/best_cnn_failure_model.pt",
+        "models/best_railway_transformer.pt"
+      ],
+      "synthetic_dependency": "Temporal sequence features",
+      "real_source": "Blocked on longitudinal defect logs",
+      "production_candidate": false,
+      "validation_notes": "Research candidates trained on CPU. XGBoost remains primary baseline until real evaluation proves superiority."
+    },
+    "evidence_fusion": {
+      "status": "TESTED",
+      "output_artifact": "data/predictions/unified_ai_evidence.csv",
+      "synthetic_dependency": "All model outputs merged",
+      "real_source": "Enriched with RailKit operational flags",
+      "production_candidate": true,
+      "validation_notes": "Combines failure risk, RUL, urgency, and operational context with confidence markers."
+    },
+    "benchmark_validator": {
+      "status": "TESTED",
+      "engine_module": "src/evaluation/benchmark_validator.py",
+      "production_candidate": true,
+      "validation_notes": "Proved CP-SAT optimization strictly outperforms uncoordinated FIFO scheduling."
+    },
+    "standalone_ml_engine": {
+      "status": "REAL_DATA_TESTED",
+      "service_module": "src/services/ml_engine.py",
+      "facade_class": "RailwayMLEngine",
+      "production_candidate": true,
+      "validation_notes": "Exposes health(), predict(), and generate_block_plan() for all planning horizons."
+    }
+  }
+}

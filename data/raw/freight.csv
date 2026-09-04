@@ -1,0 +1,7 @@
+forecast_id,section_id,date,hour,expected_freight_count,forecast_confidence
+FR001,NDL-MTJ-01,2026-09-03,0,2,0.82
+FR002,NDL-MTJ-01,2026-09-03,1,1,0.76
+FR003,NDL-MTJ-01,2026-09-03,2,3,0.91
+FR004,MTJ-AGC-01,2026-09-03,1,2,0.80
+FR005,MTJ-AGC-01,2026-09-03,2,3,0.89
+FR006,AGC-GWL-01,2026-09-03,1,1,0.72
