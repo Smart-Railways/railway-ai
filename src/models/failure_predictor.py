@@ -1,8 +1,12 @@
 """
-Failure Risk Predictor — Models Layer (Phases 9 & 10)
+Failure Risk Predictor — Models Layer (V2)
 
 Loads the calibrated XGBoost model and applies optimal decision thresholds,
 confidence estimation, and feature-level validation.
+
+V2 Changes:
+  - Removed unsupported `weather_stress` feature (was pure random noise).
+  - Feature set reduced from 8 to 7 legitimate operational features.
 """
 
 import os
@@ -25,16 +29,24 @@ class FailureRiskPredictor:
         "condition_score",
         "criticality",
         "usage_factor",
-        "weather_stress",
         "historical_failure_count",
         "historical_downtime_hours",
-        "days_since_last_failure"
+        "days_since_last_failure",
     ]
 
-    DEFAULT_THRESHOLD = 0.35  # Optimal threshold tuned on PR-AUC validation
+    DEFAULT_THRESHOLD = 0.0120  # Calibrated optimal F1 threshold tuned on validation PR-curve (reflects true 0.44% failure base rate)
 
-    def __init__(self, model_path: str = "models/calibrated_xgboost.pkl"):
-        self.model_path = Path(model_path)
+    def __init__(self, model_path: str = "models/production/calibrated_xgboost.pkl"):
+        p = Path(model_path)
+        if not p.is_absolute() and not p.exists():
+            cand = Path(__file__).resolve().parents[2] / model_path
+            if cand.exists():
+                p = cand
+            elif "production" not in str(model_path):
+                prod_cand = Path(__file__).resolve().parents[2] / "models" / "production" / p.name
+                if prod_cand.exists():
+                    p = prod_cand
+        self.model_path = p
         self.model = None
         self._load_model()
 
@@ -64,7 +76,7 @@ class FailureRiskPredictor:
         has_all_features = all(col in df.columns for col in self.FEATURE_COLUMNS)
 
         if not self.is_available or not has_all_features:
-            # Fallback heuristic if raw telemetry features are absent
+            # Fallback heuristic if required asset features are absent
             # (e.g. when work order provides only precomputed condition / failure_probability)
             if "failure_probability" not in df.columns:
                 df["failure_probability"] = 0.0

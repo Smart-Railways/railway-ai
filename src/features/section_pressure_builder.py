@@ -22,6 +22,7 @@ Critical design rules:
 import json
 import glob
 import os
+from pathlib import Path
 from dataclasses import dataclass
 from typing import Optional
 
@@ -72,6 +73,16 @@ class RailKitSectionPressureBuilder:
         captures_dir: str = "data/raw_real/railkit",
         evidence_csv: str = "data/processed_real/railkit_section_mapping_evidence.csv",
     ):
+        base_dir = Path(__file__).resolve().parents[2]
+
+        p_captures = Path(captures_dir)
+        if not p_captures.is_absolute() and not p_captures.exists() and (base_dir / captures_dir).exists():
+            captures_dir = str(base_dir / captures_dir)
+
+        p_evidence = Path(evidence_csv)
+        if not p_evidence.is_absolute() and not p_evidence.exists() and (base_dir / evidence_csv).exists():
+            evidence_csv = str(base_dir / evidence_csv)
+
         self.captures_dir = captures_dir
         self.evidence_csv = evidence_csv
 

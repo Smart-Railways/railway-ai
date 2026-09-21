@@ -71,9 +71,9 @@ class BenchmarkValidator:
                 for s in range(w_start, w_end - duration_slots + 1):
                     e = s + duration_slots
 
-                    # Check global non-overlap (matching prototype BlockOptimizer constraint)
+                    # Check section-level non-overlap
                     clash = False
-                    for (prev_s, prev_e) in global_usage:
+                    for (prev_s, prev_e) in section_usage.get(sec, []):
                         if not (e <= prev_s or s >= prev_e):
                             clash = True
                             break
@@ -133,7 +133,8 @@ class BenchmarkValidator:
         ai_score = ai_plan["maintenance_decision_score"].sum() if not ai_plan.empty else 0.0
         ai_delay = ai_plan["predicted_delay_minutes"].sum() if not ai_plan.empty else 0.0
 
-        score_improvement = ai_score - baseline_res["total_decision_score"]
+        ai_total_score = round(float(ai_score), 4)
+        score_improvement = ai_total_score - baseline_res["total_decision_score"]
 
         return {
             "baseline": {
@@ -143,13 +144,13 @@ class BenchmarkValidator:
             },
             "railway_ai": {
                 "tasks_scheduled": len(ai_plan),
-                "total_decision_score": round(float(ai_score), 4),
+                "total_decision_score": ai_total_score,
                 "predicted_delay_minutes": round(float(ai_delay), 2),
             },
             "comparison": {
                 "score_improvement": round(float(score_improvement), 4),
                 "ai_scheduled_count": len(ai_plan),
                 "baseline_scheduled_count": baseline_res["scheduled_tasks_count"],
-                "superiority_demonstrated": bool(ai_score >= baseline_res["total_decision_score"]),
+                "superiority_demonstrated": bool(ai_total_score >= baseline_res["total_decision_score"] - 1e-6),
             }
         }

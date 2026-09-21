@@ -16,7 +16,7 @@ import csv
 import pytest
 
 import sys
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
 from src.data.section_evidence_builder import (
     SectionEvidenceBuilder,

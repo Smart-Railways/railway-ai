@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 import os
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
 from src.models.failure_predictor import FailureRiskPredictor
 from src.services.ml_engine import RailwayMLEngine
@@ -21,7 +21,7 @@ class TestFailureRiskPredictor:
 
     @pytest.fixture
     def predictor(self):
-        return FailureRiskPredictor(model_path="models/calibrated_xgboost.pkl")
+        return FailureRiskPredictor(model_path="models/production/calibrated_xgboost.pkl")
 
     @pytest.fixture
     def sample_features(self):
@@ -32,7 +32,6 @@ class TestFailureRiskPredictor:
                 "condition_score": 42.0,
                 "criticality": 4,
                 "usage_factor": 1.35,
-                "weather_stress": 0.8,
                 "historical_failure_count": 3,
                 "historical_downtime_hours": 14.5,
                 "days_since_last_failure": 28.0
@@ -43,7 +42,6 @@ class TestFailureRiskPredictor:
                 "condition_score": 92.0,
                 "criticality": 2,
                 "usage_factor": 0.65,
-                "weather_stress": 0.2,
                 "historical_failure_count": 0,
                 "historical_downtime_hours": 0.0,
                 "days_since_last_failure": 450.0

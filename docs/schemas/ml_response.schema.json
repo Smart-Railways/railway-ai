@@ -1,0 +1,341 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RailwayAIMLEvaluationResponse",
+  "description": "Standardized ML response contract for backend integration in Railway-AI, freezing the 4 output categories: RISK, PRIORITY, EXPLANATION, and SCHEDULING.",
+  "type": "object",
+  "required": [
+    "status",
+    "engine_version",
+    "tasks_evaluated",
+    "results",
+    "metrics"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["SUCCESS", "EMPTY_INPUT", "ERROR"],
+      "description": "Execution status of the ML evaluation pipeline."
+    },
+    "engine_version": {
+      "type": "string",
+      "description": "Semantic version string of the Railway ML Engine."
+    },
+    "tasks_evaluated": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of tasks processed."
+    },
+    "results": {
+      "type": "array",
+      "description": "List of evaluated maintenance tasks ordered by priority decision rank.",
+      "items": {
+        "type": "object",
+        "required": [
+          "task_id",
+          "section_id",
+          "department",
+          "decision_rank",
+          "risk",
+          "priority",
+          "explanation",
+          "scheduling"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Unique identifier for the maintenance task."
+          },
+          "section_id": {
+            "type": "string",
+            "description": "Physical railway corridor section identifier (e.g. NDL-MTJ-01)."
+          },
+          "department": {
+            "type": "string",
+            "description": "Department responsible for maintenance (ENGINEERING, S&T, TRACTION)."
+          },
+          "decision_rank": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Sequential rank among evaluated tasks (1 = highest urgency)."
+          },
+          "risk": {
+            "type": "object",
+            "description": "Category 1: Calibrated failure probability and 30-day failure classification.",
+            "required": [
+              "failure_probability",
+              "predicted_failure_30d"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "failure_probability": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "description": "Calibrated 30-day failure probability (Platt sigmoid scaling on XGBoost)."
+              },
+              "predicted_failure_30d": {
+                "type": "boolean",
+                "description": "Binary flag indicating failure probability exceeds the calibrated operating threshold (0.0120)."
+              }
+            }
+          },
+          "priority": {
+            "type": "object",
+            "description": "Category 2: 5-factor priority score, category, and factor breakdown.",
+            "required": [
+              "priority_score",
+              "priority_category",
+              "score_breakdown"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "priority_score": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "description": "Composite priority decision score (0.0 to 1.0)."
+              },
+              "priority_category": {
+                "type": "string",
+                "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+                "description": "Urgency classification based on priority score thresholds."
+              },
+              "score_breakdown": {
+                "type": "object",
+                "description": "Normalized factor components and their weighted sum.",
+                "required": [
+                  "failure_risk_factor",
+                  "criticality_factor",
+                  "urgency_factor",
+                  "overdue_factor",
+                  "operational_factor",
+                  "total_score"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "failure_risk_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "criticality_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "urgency_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "overdue_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "operational_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "total_score": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+                }
+              }
+            }
+          },
+          "explanation": {
+            "type": "object",
+            "description": "Category 3: Human-interpretable decision rationale and factor breakdown.",
+            "required": [
+              "reason_tags",
+              "score_breakdown",
+              "explanation_summary"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "reason_tags": {
+                "type": "array",
+                "description": "Rule-based explainability tags highlighting significant factors.",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "HIGH_FAILURE_RISK",
+                    "HIGH_URGENCY",
+                    "HIGH_CRITICALITY",
+                    "OVERDUE_MAINTENANCE",
+                    "HIGH_OPERATIONAL_PRESSURE",
+                    "ROUTINE_INSPECTION"
+                  ]
+                }
+              },
+              "score_breakdown": {
+                "type": "object",
+                "description": "Breakdown duplicate for unified explanation inspection.",
+                "required": [
+                  "failure_risk_factor",
+                  "criticality_factor",
+                  "urgency_factor",
+                  "overdue_factor",
+                  "operational_factor",
+                  "total_score"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "failure_risk_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "criticality_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "urgency_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "overdue_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "operational_factor": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "total_score": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+                }
+              },
+              "explanation_summary": {
+                "type": "string",
+                "description": "Human-readable summary statement explaining the ranking decision."
+              }
+            }
+          },
+          "scheduling": {
+            "type": "object",
+            "description": "Category 4: CP-SAT candidate block window recommendations.",
+            "required": [
+              "recommended_windows",
+              "total_recommendations",
+              "has_feasible_window"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "total_recommendations": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3,
+                "description": "Number of feasible recommended block windows (capped at 3)."
+              },
+              "has_feasible_window": {
+                "type": "boolean",
+                "description": "True if at least one feasible block window was found."
+              },
+              "recommended_windows": {
+                "type": "array",
+                "maxItems": 3,
+                "description": "Candidate block windows ranked 1, 2, 3.",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "rank",
+                    "block_id",
+                    "start_slot",
+                    "end_slot",
+                    "duration_minutes",
+                    "required_manpower",
+                    "feasibility_status",
+                    "recommendation_reasons",
+                    "coordination",
+                    "selection_status",
+                    "human_confirmation_required",
+                    "is_booked",
+                    "booking_status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "rank": {
+                      "type": "integer",
+                      "enum": [1, 2, 3],
+                      "description": "Ordinal ranking of recommendation (1 = top choice)."
+                    },
+                    "block_id": {
+                      "type": "string",
+                      "description": "Identifier of the railway traffic block window."
+                    },
+                    "start_slot": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Start time slot (30-minute interval, inclusive)."
+                    },
+                    "end_slot": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "End time slot (30-minute interval, exclusive)."
+                    },
+                    "duration_minutes": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Duration of scheduled maintenance in minutes."
+                    },
+                    "required_manpower": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Personnel required during this window."
+                    },
+                    "feasibility_status": {
+                      "type": "string",
+                      "enum": ["FEASIBLE", "INFEASIBLE"],
+                      "description": "Hard constraint feasibility status."
+                    },
+                    "recommendation_reasons": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "description": "Optimization criteria explaining window ranking."
+                    },
+                    "coordination": {
+                      "type": "object",
+                      "required": [
+                        "is_coordinated",
+                        "coordination_departments",
+                        "coordination_reason"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "is_coordinated": {
+                          "type": "boolean",
+                          "description": "True if co-located with compatible cross-department tasks."
+                        },
+                        "coordination_departments": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "description": "Departments co-scheduled in this window and section."
+                        },
+                        "coordination_reason": {
+                          "type": "string",
+                          "description": "Explanation of joint maintenance bundling."
+                        }
+                      }
+                    },
+                    "selection_status": {
+                      "type": "string",
+                      "const": "RECOMMENDED",
+                      "description": "State invariant: windows are only recommended, never automatically selected."
+                    },
+                    "human_confirmation_required": {
+                      "type": "boolean",
+                      "const": true,
+                      "description": "State invariant: human operator must confirm slot."
+                    },
+                    "is_booked": {
+                      "type": "boolean",
+                      "const": false,
+                      "description": "State invariant: recommendation is never auto-booked."
+                    },
+                    "booking_status": {
+                      "type": "string",
+                      "const": "UNBOOKED",
+                      "description": "State invariant: slot remains unbooked until confirmed."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "tasks_count",
+        "critical_tasks_count",
+        "high_tasks_count",
+        "medium_tasks_count",
+        "low_tasks_count",
+        "tasks_with_recommendations",
+        "infeasible_tasks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "tasks_count": { "type": "integer", "minimum": 0 },
+        "critical_tasks_count": { "type": "integer", "minimum": 0 },
+        "high_tasks_count": { "type": "integer", "minimum": 0 },
+        "medium_tasks_count": { "type": "integer", "minimum": 0 },
+        "low_tasks_count": { "type": "integer", "minimum": 0 },
+        "tasks_with_recommendations": { "type": "integer", "minimum": 0 },
+        "infeasible_tasks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of task IDs that could not be feasibly scheduled in any available window."
+        }
+      }
+    }
+  }
+}

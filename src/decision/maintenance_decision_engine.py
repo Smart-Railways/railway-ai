@@ -1,3 +1,4 @@
+import json
 import numpy as np
 import pandas as pd
 
@@ -14,12 +15,10 @@ class MaintenanceDecisionEngine:
     """
 
     WEIGHTS = {
-        "failure_risk_factor": 0.25,
+        "failure_risk_factor": 0.30,
+        "criticality_factor": 0.20,
         "urgency_factor": 0.20,
-        "criticality_factor": 0.15,
-        "overdue_factor": 0.10,
-        "duration_factor": 0.05,
-        "traffic_factor": 0.10,
+        "overdue_factor": 0.15,
         "operational_factor": 0.15,
     }
 
@@ -87,28 +86,20 @@ class MaintenanceDecisionEngine:
             .clip(0, 1)
         )
 
-        result["duration_factor"] = (
-            self._numeric_column(
-                result,
-                "estimated_duration",
-            )
-            .div(180)
-            .clip(0, 1)
-        )
-
-        result["traffic_factor"] = (
-            self._numeric_column(
-                result,
-                "traffic_intensity",
-            )
-            .clip(0, 1)
-        )
-
         if "railkit_operational_pressure" in result.columns:
             result["operational_factor"] = (
                 self._numeric_column(
                     result,
                     "railkit_operational_pressure",
+                )
+                .clip(0, 1)
+            )
+
+        elif "traffic_intensity" in result.columns:
+            result["operational_factor"] = (
+                self._numeric_column(
+                    result,
+                    "traffic_intensity",
                 )
                 .clip(0, 1)
             )
@@ -134,10 +125,6 @@ class MaintenanceDecisionEngine:
             * result["criticality_factor"]
             + self.WEIGHTS["overdue_factor"]
             * result["overdue_factor"]
-            + self.WEIGHTS["duration_factor"]
-            * result["duration_factor"]
-            + self.WEIGHTS["traffic_factor"]
-            * result["traffic_factor"]
             + self.WEIGHTS["operational_factor"]
             * result["operational_factor"]
         ).clip(0, 1)
@@ -177,6 +164,20 @@ class MaintenanceDecisionEngine:
             "decision_rank",
             np.arange(1, len(result) + 1),
         )
+
+        breakdowns = []
+        for _, row in result.iterrows():
+            bd = {
+                "failure_risk_factor": float(row["failure_risk_factor"]),
+                "criticality_factor": float(row["criticality_factor"]),
+                "urgency_factor": float(row["urgency_factor"]),
+                "overdue_factor": float(row["overdue_factor"]),
+                "operational_factor": float(row["operational_factor"]),
+                "total": float(row["maintenance_decision_score"])
+            }
+            breakdowns.append(json.dumps(bd))
+
+        result["score_breakdown"] = breakdowns
 
         # Generate explainable decision reason codes
         reason_codes = []

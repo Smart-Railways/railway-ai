@@ -1,0 +1,59 @@
+{
+  "v1": {
+    "features": 8,
+    "threshold": 0.35,
+    "accuracy": 0.9925714285714285,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5955006421327664,
+    "pr_auc": 0.013139434783473436,
+    "confusion_matrix": [
+      [
+        6948,
+        0
+      ],
+      [
+        52,
+        0
+      ]
+    ]
+  },
+  "v2": {
+    "features": 7,
+    "threshold": 0.012,
+    "accuracy": 0.9915714285714285,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.5601279837031132,
+    "pr_auc": 0.012821835816219287,
+    "confusion_matrix": [
+      [
+        6941,
+        7
+      ],
+      [
+        52,
+        0
+      ]
+    ],
+    "prob_range": [
+      0.0015106768182188025,
+      0.01260789493403262
+    ],
+    "prob_mean": 0.00453847075395675
+  },
+  "removed_features": [
+    "weather_stress"
+  ],
+  "v2_feature_list": [
+    "asset_age_years",
+    "condition_score",
+    "criticality",
+    "usage_factor",
+    "historical_failure_count",
+    "historical_downtime_hours",
+    "days_since_last_failure"
+  ]
+}

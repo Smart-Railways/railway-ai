@@ -1,0 +1,56 @@
+{
+  "model_name": "candidate_v3_calibrated_xgboost",
+  "version": "3.0.0-candidate",
+  "target_horizon": "30d_next_monthly_observation",
+  "target_definition": "prediction_date < failure_date <= prediction_date + DateOffset(months=1)",
+  "training_data": "data/processed/candidate_v3/failure_train.csv (72,000 rows, 782 failures)",
+  "validation_data": "data/processed/candidate_v3/failure_validation.csv (12,000 rows, 148 failures)",
+  "test_data": "data/processed/candidate_v3/failure_test.csv (7,000 rows, 108 failures)",
+  "feature_columns": [
+    "asset_age_years",
+    "condition_score",
+    "criticality",
+    "usage_factor",
+    "historical_failure_count",
+    "historical_downtime_hours",
+    "days_since_last_failure"
+  ],
+  "hyperparameters": {
+    "n_estimators": 242,
+    "max_depth": 3,
+    "learning_rate": 0.018961625351033223,
+    "min_child_weight": 6,
+    "subsample": 0.819683927204421,
+    "colsample_bytree": 0.8384967934413827,
+    "reg_alpha": 0.001142048890339075,
+    "reg_lambda": 0.16471572462751574,
+    "scale_pos_weight": 2.0198585331558183,
+    "random_state": 42,
+    "eval_metric": "aucpr"
+  },
+  "calibration_method": "CalibratedClassifierCV(method='sigmoid', cv=5)",
+  "operating_threshold": 0.02,
+  "operational_mode": "risk_ranking",
+  "metrics": {
+    "validation": {
+      "pr_auc": 0.02409433579809383,
+      "roc_auc": 0.6192679876129927,
+      "brier_score": 0.012170117306407453,
+      "recall_at_1pct": 0.04054054054054054,
+      "recall_at_5pct": 0.10810810810810811,
+      "lift_at_1pct": 4.054054054054054,
+      "lift_at_5pct": 2.1621621621621623
+    },
+    "test_untouched": {
+      "pr_auc": 0.03375025624975299,
+      "roc_auc": 0.6996329614582661,
+      "brier_score": 0.015101827179694136,
+      "recall_at_1pct": 0.027777777777777776,
+      "recall_at_5pct": 0.12037037037037036,
+      "lift_at_1pct": 2.7777777777777777,
+      "lift_at_5pct": 2.4074074074074074
+    }
+  },
+  "production_promotion_status": "READY FOR PROMOTION REVIEW",
+  "promoted_to_production": false
+}

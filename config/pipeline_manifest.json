@@ -20,7 +20,7 @@
     "failure_prediction": {
       "status": "TESTED",
       "model_type": "calibrated_xgboost",
-      "model_file": "models/calibrated_xgboost.pkl",
+      "model_file": "models/production/calibrated_xgboost.pkl",
       "synthetic_dependency": "data/processed/failure_ml_dataset.csv",
       "real_source": "data/raw_real/failures/ (7 real records currently)",
       "production_candidate": false,
@@ -93,7 +93,7 @@
       "model_type": "isolation_forest_and_lstm_autoencoder",
       "model_file": "models/best_railway_autoencoder.pt",
       "synthetic_dependency": "data/processed/asset_history_simulated.csv",
-      "real_source": "Pending live sensor/inspection stream",
+      "real_source": "Pending structured inspection data",
       "production_candidate": false,
       "validation_notes": "Dual isolation forest + autoencoder anomaly scores computed on synthetic asset condition history."
     },

@@ -5,6 +5,7 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
+*$py.class
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -17,6 +18,7 @@ __pycache__/
 .venv-dl/
 venv/
 env/
+ENV/
 
 # =========================
 # Jupyter
@@ -31,10 +33,26 @@ env/
 !.env.example
 
 # =========================
+# Local logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Coverage
+# =========================
+.coverage
+htmlcov/
+coverage.xml
+
+# =========================
 # IDE & OS
 # =========================
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
 
@@ -58,9 +76,9 @@ data/predictions/*
 !data/predictions_real/**
 
 # =========================
-# Logs & Temporary Files
+# Local Temporary Files
 # =========================
-*.log
 *.tmp
 *.temp
 *.save
+*.bak

@@ -8,7 +8,6 @@
     "asset_age_years": "number",
     "criticality": "number",
     "usage_factor": "number",
-    "weather_stress": "number",
     "historical_failure_count": "number",
     "historical_downtime_hours": "number",
     "days_since_last_failure": "number"

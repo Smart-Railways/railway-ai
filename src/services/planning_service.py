@@ -25,6 +25,7 @@ class PlanningService:
         self,
         decision_engine=None,
         optimizer=None,
+        lifecycle_manager=None,
     ):
         self.decision_engine = (
             decision_engine or MaintenanceDecisionEngine()
@@ -33,6 +34,15 @@ class PlanningService:
         self.optimizer = (
             optimizer or BlockOptimizer()
         )
+
+        self.lifecycle_manager = lifecycle_manager
+
+    def get_lifecycle_manager(self):
+        """Returns or lazily instantiates the MaintenanceLifecycleManager."""
+        if self.lifecycle_manager is None:
+            from src.lifecycle.manager import MaintenanceLifecycleManager
+            self.lifecycle_manager = MaintenanceLifecycleManager()
+        return self.lifecycle_manager
 
     @staticmethod
     def _validate_worklist(df):
@@ -175,4 +185,36 @@ class PlanningService:
 
         return self.optimizer.optimize(
             optimizer_input
+        )
+
+    def recommend_windows(
+        self,
+        worklist,
+        block_windows=None,
+        railkit_pressure=None,
+        max_recommendations=3,
+    ):
+        """
+        Generate ranked candidate block window recommendations for a worklist.
+
+        Produces up to max_recommendations (default 3) per maintenance task.
+        CP-SAT is strictly a recommendation engine; human operators make
+        the final slot authorization decision.
+        """
+        if "maintenance_decision_score" in worklist.columns:
+            scored = worklist.copy()
+        else:
+            scored = self.score(
+                worklist,
+                railkit_pressure=railkit_pressure,
+            )
+
+        optimizer_input = self._prepare_optimizer_input(
+            scored
+        )
+
+        return self.optimizer.optimize_with_recommendations(
+            optimizer_input,
+            block_windows=block_windows,
+            max_recommendations=max_recommendations,
         )

@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
 from src.decision.maintenance_decision_engine import MaintenanceDecisionEngine
 from src.optimization.block_optimizer import BlockOptimizer
@@ -124,6 +124,14 @@ class TestDecisionEngineRegression:
         """Weights must sum to 1.0."""
         total = sum(MaintenanceDecisionEngine.WEIGHTS.values())
         assert abs(total - 1.0) < 1e-9
+
+        # Verify specific weights matching the 5 factors
+        assert len(MaintenanceDecisionEngine.WEIGHTS) == 5
+        assert MaintenanceDecisionEngine.WEIGHTS["failure_risk_factor"] == 0.30
+        assert MaintenanceDecisionEngine.WEIGHTS["criticality_factor"] == 0.20
+        assert MaintenanceDecisionEngine.WEIGHTS["urgency_factor"] == 0.20
+        assert MaintenanceDecisionEngine.WEIGHTS["overdue_factor"] == 0.15
+        assert MaintenanceDecisionEngine.WEIGHTS["operational_factor"] == 0.15
 
     def test_railkit_pressure_overrides_operational(self):
         """When railkit_operational_pressure is present, it should be used."""

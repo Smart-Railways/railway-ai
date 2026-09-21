@@ -26,12 +26,14 @@ Railway AI combines predictive track health analytics with constraint optimizati
 
 ### 1. Predicts Trouble Before It Happens
 Instead of waiting for an asset to fail on the tracks, the machine learning models look at:
-- Asset age and wear-and-tear history
-- Usage intensity (how many gross million tonnes of freight have rolled over it)
-- Weather stress and local temperature variations
-- Time elapsed since the last inspection
+- Asset age and installation vintage
+- Track condition score and degradation history
+- Track route criticality (mainline vs. loop line classification)
+- Section usage intensity (traffic loading ratio)
+- Historical failure counts and cumulative downtime hours
+- Days elapsed since the last recorded failure
 
-It outputs a calibrated **failure probability** for the next 30 days and estimates the **Remaining Useful Life (RUL)** so maintenance teams know exactly what needs attention first.
+It outputs a calibrated **failure probability** for the next 30 days and feeds directly into multi-factor maintenance prioritization.
 
 ### 2. Listens to Real Train Traffic & Delay Pressure
 The system connects directly with live train telemetry along the corridor (capturing flagship trains like the *12002 Bhopal Shatabdi*, *12301 Howrah Rajdhani*, *12904 Golden Temple Mail*, and *20164 Vande Bharat*). It monitors real-time running delays across key sections and assigns dynamic **operational pressure scores** — so the system avoids scheduling blocks when a section is already struggling with congestion or severe delays.
@@ -52,8 +54,12 @@ Maintenance isn't just planned day-to-day. The engine supports:
 - **30-Day Monthly Lookahead**: Strategic long-term maintenance roadmaps.
 - **Dynamic Rescheduling**: If a sudden delay or emergency occurs on the corridor, the engine locks already-completed work and dynamically re-plans the remaining jobs on the fly.
 
-### 6. Transparent & Human-in-the-Loop
-We do not believe in black-box AI for mission-critical railways. Every single recommendation includes plain-English reason tags (e.g., `HIGH_FAILURE_RISK`, `OVERDUE_MAINTENANCE`, `HIGH_OPERATIONAL_PRESSURE`) and a confidence rating. The human section controller always retains full authority to approve, tweak, or override any slot.
+### 6. Transparent & Human-in-the-Loop (Top-3 Recommendations)
+We do not believe in black-box or autonomous AI for mission-critical railways. CP-SAT acts strictly as a decision-support recommendation engine:
+- For each task, CP-SAT produces **at most 3 ranked feasible block window recommendations** (`rank 1`, `rank 2`, `rank 3`).
+- Every recommendation includes plain-English reason tags (e.g., `OPTIMAL_PRIORITY_FIT`, `LOWEST_OPERATIONAL_DELAY`, `CROSS_DEPARTMENT_COORDINATION`).
+- CP-SAT produces ranked feasible recommendations; it does **not** book the final maintenance slot.
+- The human operator/controller chooses the final maintenance slot.
 
 ---
 
@@ -136,23 +142,39 @@ railway-ai/
 │   ├── raw_real/railkit/              # Real RailKit telemetry captures (JSON)
 │   └── processed_real/                # Cleaned corridor section mapping evidence (CSV)
 │
-├── models/                            # Trained model weights & parameters
-│   ├── calibrated_xgboost.pkl         # 30-day failure classifier (PR-AUC tuned)
-│   ├── cox_survival_model.pkl         # Survival analysis model
-│   ├── best_lstm_failure_model.pt     # Deep learning temporal sequence model
-│   ├── best_cnn_failure_model.pt      # 1D-CNN pattern recognition checkpoint
-│   └── best_railway_transformer.pt    # Attention-based failure sequence weights
+├── models/                            # Organized model artifacts
+│   ├── production/                    # Active production model (Candidate V3)
+│   │   └── calibrated_xgboost.pkl
+│   ├── legacy/                        # Archived legacy model (V2 baseline)
+│   │   └── calibrated_xgboost_v2_legacy.pkl
+│   ├── candidate/                     # Evaluated candidate models & manifests
+│   │   └── candidate_v3/
+│   └── experimental/                  # Deep learning, survival & research checkpoints
 │
-├── tests/                             # 75 automated pytest unit and integration tests
-│   ├── test_failure_predictor.py      # Risk inference & calibration tests
-│   ├── test_benchmark_validator.py    # AI vs FIFO baseline comparison tests
-│   ├── test_multi_horizon_and_engine.py # Weekly, monthly, rolling & dynamic tests
-│   ├── test_planning_regression.py    # Optimizer constraint & scoring tests
-│   ├── test_section_evidence.py       # Corridor station indexing & evidence tests
-│   └── test_ml_engine.py              # Service health & status tests
+├── scripts/                           # Reusable operational & evaluation scripts
+│   ├── training/                      # Model training pipelines
+│   ├── evaluation/                    # Independent audit & candidate evaluation
+│   ├── validation/                    # Feature leakage & inference smoke tests
+│   ├── data/                          # Target & dataset generation pipelines
+│   └── maintenance/                   # Rollback runbooks & verification utilities
 │
-├── docs/                              # Project documentation & ML audit reports
-│   └── ML_STATUS.md                   # Full component maturity and validation log
+├── tests/                             # 160 automated pytest unit, integration & contract tests
+│   ├── model/                         # Risk predictor, candidate v3 & benchmark validation
+│   ├── decision/                      # 5-factor priority formula & regression tests
+│   ├── scheduling/                    # CP-SAT Top-3 recommendations & multi-horizon tests
+│   ├── lifecycle/                     # Real-time state machine & human confirmation tests
+│   ├── contracts/                     # Backend schema & 4-category contract tests
+│   ├── data/                          # Corridor evidence & telemetry tests
+│   └── integration/                   # Unified RailwayMLEngine end-to-end tests
+│
+├── schemas/                           # Machine-readable integration schemas
+│   └── ml_response.schema.json        # Frozen 4-category backend response schema
+│
+├── docs/                              # Project documentation & audit reports
+│   ├── architecture/                  # Architectural references & design
+│   ├── model/                         # ML status & model improvement reports
+│   ├── integration/                   # Backend contract & defense guides
+│   └── audits/                        # Promotion readiness, final audits & verification
 │
 ├── AGENT_STATE.md                     # Engineering lifecycle & phase tracking matrix
 ├── requirements.txt                   # Python dependencies
@@ -184,15 +206,9 @@ pip install -r requirements.txt
 ```
 
 ### 3. Run the Automated Test Suite
-To verify that all 75 unit, integration, and optimizer regression tests pass:
 
 ```bash
 pytest tests/ -v
-```
-
-You should see output ending with:
-```text
-============================== 75 passed in 5.69s ==============================
 ```
 
 ---
@@ -244,7 +260,11 @@ print(scored_tasks[["task_id", "maintenance_decision_score", "decision_reasons"]
 
 # 5. Generate a conflict-free block plan (weekly, monthly, rolling, or dynamic)
 plan = engine.generate_block_plan(tasks, horizon_type="weekly")
-print(f"Scheduled {len(plan['scheduled_tasks'])} tasks across available windows!")
+print(f"Scheduled tasks across available windows!")
+
+# 6. Generate Top-3 ranked feasible block window recommendations (Human-in-the-Loop)
+recommendations = engine.recommend_windows(tasks)
+print(f"Generated {recommendations['metrics']['total_recommendations']} ranked recommendations for human operator review!")
 ```
 
 ---

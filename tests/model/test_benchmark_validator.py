@@ -7,10 +7,10 @@ import sys
 import pandas as pd
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
 from src.evaluation.benchmark_validator import BenchmarkValidator
-from tests.test_multi_horizon_and_engine import make_test_worklist
+from tests.scheduling.test_multi_horizon_and_engine import make_test_worklist
 
 
 class TestBenchmarkValidator:

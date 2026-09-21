@@ -7,7 +7,7 @@ import sys
 import pandas as pd
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
 from src.services.ml_engine import RailwayMLEngine
 from src.optimization.multi_horizon_planner import MultiHorizonPlanner
